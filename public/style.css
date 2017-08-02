@@ -3,8 +3,9 @@ body {
   padding:0px;
   margin:0px;
 }
+
 .navbar {
-  width:100%;
+  width:100vw;
   position:fixed;
   padding:20px;
   margin: 0px;
@@ -14,6 +15,7 @@ body {
 .logo {
   margin:0px;
   display:inline;
+  float: left;
   color:white;
   font-family:Monospace;
   font-size: 36px;
@@ -21,7 +23,8 @@ body {
 }
 .navgroup {
   display:inline;
-  margin-right:-100px;
+  float:right;
+  padding:10px;
 }
 .navitem {
   display:inline;
@@ -32,4 +35,13 @@ body {
   margin-right: 0px;
   text-align:center;
 }
-
+.navitem:hover{
+  background-color:#5aa2bf;
+  box-shadow: inset 0px 0px 4px #7bafce;
+}
+.push {
+  margin:50px;
+}
+.footer {
+  margin: -50px;
+}
