@@ -1,2 +1,35 @@
-
+body {
+  height:100vh;
+  padding:0px;
+  margin:0px;
+}
+.navbar {
+  width:100%;
+  position:fixed;
+  padding:20px;
+  margin: 0px;
+  border-bottom: 2px solid white;
+  background-color:#3e86ae;
+}
+.logo {
+  margin:0px;
+  display:inline;
+  color:white;
+  font-family:Monospace;
+  font-size: 36px;
+  text-align:center;
+}
+.navgroup {
+  display:inline;
+  margin-right:-100px;
+}
+.navitem {
+  display:inline;
+  padding:25px;
+  color:white;
+  font-family:sans-serif;
+  width:80px;
+  margin-right: 0px;
+  text-align:center;
+}
 
