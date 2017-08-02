@@ -1,2 +1,47 @@
+body {
+  height:100vh;
+  padding:0px;
+  margin:0px;
+}
 
-
+.navbar {
+  width:100vw;
+  position:fixed;
+  padding:20px;
+  margin: 0px;
+  border-bottom: 2px solid white;
+  background-color:#3e86ae;
+}
+.logo {
+  margin:0px;
+  display:inline;
+  float: left;
+  color:white;
+  font-family:Monospace;
+  font-size: 36px;
+  text-align:center;
+}
+.navgroup {
+  display:inline;
+  float:right;
+  padding:10px;
+}
+.navitem {
+  display:inline;
+  padding:25px;
+  color:white;
+  font-family:sans-serif;
+  width:80px;
+  margin-right: 0px;
+  text-align:center;
+}
+.navitem:hover{
+  background-color:#5aa2bf;
+  box-shadow: inset 0px 0px 4px #7bafce;
+}
+.push {
+  margin:50px;
+}
+.footer {
+  margin: -50px;
+}
