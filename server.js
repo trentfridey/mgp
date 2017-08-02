@@ -15,6 +15,7 @@ app.use(express.static('public'));
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
   response.sendFile(__dirname + '/public/style.css');
+  response.sendFile(__dirname + '/public/client.js');
 });
 
 // listen for requests :)
