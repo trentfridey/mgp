@@ -68,12 +68,16 @@ h1 {
   border-left: 1px solid #22748f;
   float:left;
   margin:0px;
+  font-size: 7px;
 }
 .cell:nth-child(70n+1){
   clear: both;
 }
 .alive {
   background-color: #cf9600;
+}
+.dead {
+  background-color: white;
 }
 .btn {
   background-color: #3e86ae;
