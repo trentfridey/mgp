@@ -2,7 +2,6 @@
   <head>
     <title>Welcome - MGP</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
-    <script src="client.js"></script>
   </head>
   <body>
     <div class="container">
@@ -11,43 +10,52 @@
         Modular Growing Pixels
       </div>
       <div class="navgroup">
-        <div class="navitem">
+        <div class="navitem" id="home">
           Home
         </div>
-        <div class="navitem">
+        <div class="navitem" id="about">
           About
         </div>
-        <div class="navitem">
+        <div class="navitem" id="signlog">
           Sign Up / Log In
         </div>
         <div style="clear: both"> <!-- for floats -->
         </div>
       </div>
     </div>
-      <div>
-      <h1>
-        Modular Growing Pixels
-      </h1>
-      <div class="board">
-        <!--- INSERT BOARD HERE --->
-      </div>
-      <div>
-        <div class="btn">
-          Start
+      <center>
+        <div class="content">
+          <h1>
+            Modular Growing Pixels
+          </h1>
+          <div class="board">
+            <!--- INSERT BOARD HERE --->
+          </div>
+          <div class="dashboard">
+            <div class="btn" id="start">
+              Start
+            </div>
+            <div class="btn" id="stop">
+              Stop
+            </div>
+            <div class="btn" id="clear">
+              Clear
+            </div>
+          </div>
         </div>
-        <div class="btn">
-          Stop
-        </div>
-        <div class="btn">
-          Clear
-        </div>
-      </div>
-      </div>
+      </center>
       <div class="push"></div> <!-- For sticky footer --->
     </div>
     <div class="footer">
     Made by Trent Fridey 2017
   </div>
+    <footer>
+      <script
+			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script>
+      <script src="client.js"></script>
+    </footer>
   </body>
   
 </html>

@@ -1,9 +1,13 @@
 body {
-  height:100vh;
+  height:100%;
   padding:0px;
   margin:0px;
 }
-
+h1 {
+  text-align: center;
+  font-family: Consolas, Monospace;
+  font-size: 36px;
+}
 .navbar {
   width:100vw;
   position:fixed;
@@ -11,13 +15,14 @@ body {
   margin: 0px;
   border-bottom: 2px solid white;
   background-color:#3e86ae;
+  border-bottom: 3px solid #22748f;
 }
 .logo {
   margin:0px;
   display:inline;
   float: left;
   color:white;
-  font-family:Monospace;
+  font-family:Consolas, Monospace;
   font-size: 36px;
   text-align:center;
 }
@@ -34,14 +39,65 @@ body {
   width:80px;
   margin-right: 0px;
   text-align:center;
+  cursor:pointer;
 }
 .navitem:hover{
   background-color:#5aa2bf;
   box-shadow: inset 0px 0px 4px #7bafce;
 }
-.push {
-  margin:50px;
+.container {
+  min-height:100%;
+  margin-bottom:-50px;
 }
-.footer {
-  margin: -50px;
+.content {
+  padding-top:80px;
+  padding-left:80px;
+  padding-right:80px;
+  margin: 0 auto;
+}
+.board {
+  width:840px;
+  height:600px;
+  margin: 0 auto;
+  border: 3px solid #7bafce;
+}
+.cell {
+  width: 11px;
+  height: 11px;
+  border-top: 1px solid #22748f;
+  border-left: 1px solid #22748f;
+  float:left;
+  margin:0px;
+  font-size: 7px;
+}
+.cell:nth-child(70n+1){
+  clear: both;
+}
+.alive {
+  background-color: #cf9600;
+}
+.dead {
+  background-color: white;
+}
+.btn {
+  background-color: #3e86ae;
+  color: white;
+  font-family: sans-serif;
+  text-align:center;
+  padding:5px;
+  margin:10px;
+  width: 75px;
+  display:inline-block;
+  border-radius: 3px;
+  border-bottom: 3px solid #22748f;
+  cursor:pointer;
+}
+.btn:hover{
+  background-color:#5aa2bf;
+  box-shadow: inset 0px 0px 4px #7bafce;
+}
+
+.push, .footer {
+  height: 50px;
+  text-align: center;
 }
