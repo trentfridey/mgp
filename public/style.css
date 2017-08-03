@@ -55,6 +55,26 @@ h1 {
   padding-right:80px;
   margin: 0 auto;
 }
+.board {
+  width:840px;
+  height:600px;
+  margin: 0 auto;
+  border: 3px solid #7bafce;
+}
+.cell {
+  width: 11px;
+  height: 11px;
+  border-top: 1px solid #22748f;
+  border-left: 1px solid #22748f;
+  float:left;
+  margin:0px;
+}
+.cell:nth-child(70n+1){
+  clear: both;
+}
+.alive {
+  background-color: #cf9600;
+}
 .btn {
   background-color: #3e86ae;
   color: white;
