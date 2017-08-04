@@ -1,5 +1,5 @@
 {
-    "name": "modulargrowingpixels",
+  "name": "modulargrowingpixels",
   "version": "0.0.1",
   "description": "Fulfilling your growing pixel dreams",
   "main": "server.js",
@@ -7,7 +7,13 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "mongodb": "^2.2.30",
+    "mongoose": "^4.11.5",
+    "body-parser": "^1.17.2",
+    "passport-local-mongoose": "^4.0.0"
   },
   "engines": {
     "node": "8.x"
@@ -15,10 +21,5 @@
   "repository": {
     "url": "https://github.com/trentfridey/mgp"
   },
-  "license": "MIT",
-  "keywords": [
-    "node",
-    "glitch",
-    "express"
-  ]
+  "license": "MIT"
 }
