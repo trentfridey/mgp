@@ -39,7 +39,7 @@
           <h2>
             Sign up
           </h2>
-          <form class="form">
+          <form class="form" method="post" action="/adduser">
             <input class="input" type="text" name="email" placeholder="Email">
             <input class="input" type="text" name="name" placeholder="Username">
             <input class="input" type="password" name="pass" placeholder="Password">
@@ -50,7 +50,7 @@
           <h2>
             Log In  
           </h2>
-          <form class="form">
+          <form class="form" method="get" action="/login">
             <input class="input" type="text" name="name" placeholder="Username">
             <input class="input" type="password" name="pass" placeholder="Password">
             <button class="btn" type="submit">Submit</button>

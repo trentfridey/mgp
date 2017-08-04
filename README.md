@@ -3,7 +3,7 @@ Game of Modular Growing Pixels (MGP)
 
 An app to simulate all of your modular growing dreams! \ ( ゜u゜)ノ
 
-In development **v1.0.0**
+In development **v1.0.1**
 
 TODO:
 -----

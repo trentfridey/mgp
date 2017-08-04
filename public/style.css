@@ -69,6 +69,10 @@ p {
   padding-right:80px;
   margin: 0 auto;
 }
+.about{
+  width:67%;
+  margin:0 auto;
+}
 .sign-in{
   display:inline-block;
   width: 250px;
