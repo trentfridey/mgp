@@ -50,6 +50,10 @@ app.get("/signin", function(req, res){
   res.sendFile(__dirname + '/views/signin.html');
 });
 
+app.get("/rules", function(req, res){
+  res.sendFile(__dirname + '/views/rules.html');
+})
+
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });

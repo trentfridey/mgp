@@ -19,6 +19,11 @@ p {
   color:#777;
   font-style: italic;
 }
+hr {
+  border: 0;
+  border-bottom: 1px dashed #999;
+  background: #fff;
+}
 .navbar {
   width:100vw;
   position:fixed;
@@ -93,6 +98,14 @@ p {
 .input:focus{
   border: 3px solid #22748f;
 }
+
+.inline-block {
+  display:inline-block;
+  margin-left: 150px;
+  margin-right: 150px;
+  padding: 25px;
+}
+
 .board {
   width:840px;
   height:600px;
