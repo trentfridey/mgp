@@ -7,6 +7,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var passportLocalMongoose = require('passport-local-mongoose');
 
 var app = express();
 app.use(bodyParser.json());
@@ -20,16 +21,25 @@ db.once('open',function(){
   console.log('connected');
 });
 var userSchema = mongoose.Schema({
-    email: String,
-    name: String,
-    pass: String
+    username: String,
+    password: String
   });
-var User = mongoose.model('User',userSchema);
+userSchema.plugin(passportLocalMongoose);
+var User = mongoose.model('User', userSchema);
+
+passport.use(new LocalStrategy(userSchema.authenticate()));
+passport.serializeUser(userSchema.serializeUser());
+passport.deserializeUser(userSchema.deserializeUser());
+
 app.post("/adduser", function(req, res){
-  var user = new User(req.body);
-  user.save()
-    .then(function(item){res.send("It works!")})
-    .catch(function(err){res.status(400).send("Unable to save to database.")});
+  User.register(new User({username: req.body.username}), req.body.password, function(err, user){
+  	if(err){
+  		return res.send('It done broke')
+  	}
+  	passport.authenticate('local')(req, res, function(){
+  		res.redirect('/')
+  	});
+  }); 
 });
 
 app.get("/login", function(req, res){
@@ -52,6 +62,7 @@ app.get("/signin", function(req, res){
 
 app.get("/rules", function(req, res){
   res.sendFile(__dirname + '/views/rules.html');
+  });
 
 var listener = app.listen(process.argv[2], function () {
 	console.log("Listening on port " + process.argv[2]); 
