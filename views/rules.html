@@ -1,0 +1,229 @@
+<html>
+  <head>
+    <title>Rules - MGP</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+  <body>
+    <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        Modular Growing Pixels
+      </div>
+      <div class="navgroup">
+        <div class="navitem" id="home">
+          Home
+        </div>
+        <a href="about">
+        <div class="navitem" id="about">
+          About
+        </div>
+        </a>
+        <a href="signin">
+        <div class="navitem" id="signlog">
+          Sign Up / Log In
+        </div>
+        </a>
+        <div style="clear: both"> <!-- for floats -->
+        </div>
+      </div>
+    </div>
+      <center>
+        <div class="content">
+          <h1>
+            Rule Editor
+          </h1>
+          <div class="inline-block">
+            <h2>
+              Stay Alive
+            </h2>
+<form>
+  <div class="rule-group">
+    <h3>
+      Box Rules
+    </h3>
+    <div class="rule-opt">
+      <div class="box">
+      <div class="cell-rule on">
+        <!-- clicking me binds data to some model -->
+      </div>
+      <div class="cell-rule on">
+        <!-- clicking me binds data to some model -->
+      </div>
+      <div class="cell-rule">
+        <!-- clicking me binds data to some model -->
+      </div>
+      <div class="cell-rule">
+        <!-- clicking me binds data to some model -->
+      </div>
+      <div class="cell-rule const">
+        <!-- clicking me binds data to some model -->
+      </div>
+      <div class="cell-rule">
+        <!-- clicking me binds data to some model -->
+      </div>
+      <div class="cell-rule">
+        <!-- clicking me binds data to some model -->
+      </div>
+      <div class="cell-rule on">
+        <!-- clicking me binds data to some model -->
+      </div>
+      <div class="cell-rule">
+        <!-- clicking me binds data to some model -->
+      </div>
+    </div>
+      <div>
+        <p>
+          1
+        </p>
+        <div class="add-rule">
+          X
+        </div>
+      </div>
+      <div class="add-rule">
+        +
+      </div>
+      <h4>
+        Add Box Rule
+      </h4>
+    </div>
+    </div>
+      
+  <div class="rule-group">
+    <h3>
+      General Rules
+    </h3>
+    <div class="rule-opt">
+      <p>
+        1. Any <select class="gen-select"> <!-- Could be replaced by an ng-options -->
+        <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      </select> neighbors
+      </p>
+      <div class="add-rule">
+        X
+      </div>
+    </div>
+    <div class="add-rule">
+        +
+      </div>
+  </div>
+  <style>
+    
+    h3 {
+  font-family: Consolas, Monospace;
+  font-size: 22px;
+  color: #777;
+    }
+    h4 {
+  font-family: Consolas, Monospace;
+  font-size: 20px;
+  color: #000;
+  font-weight: bold;
+  display: inline;
+    }
+    p {
+      font-family: Helvetica, sans-serif;
+      font-size: 18px;
+    }
+    .rule-group {
+      border: 1px solid #999;
+      padding: 25px;
+    }
+    .rule-opt {
+      display:inline-block;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .rule-opt.right {
+      border-left: 1px solid #999;
+    }
+    .box {
+      border: 3px solid #7bafce;
+      width: 60px;
+      height: 60px;
+    }
+    
+    .cell-rule {
+  width: 19px;
+  height: 19px;
+  border-top: 1px solid #22748f;
+  border-left: 1px solid #22748f;
+  float:left;
+  margin:0px;
+  font-size: 7px;
+    }
+    .cell-rule:nth-child(3n+1){
+      clear: both;
+    }
+    .cell-rule:hover {
+      background-color:#efb800;
+    }
+    .const {
+      background: repeating-linear-gradient(
+      45deg,
+        #22748f,
+        #22748f 5px,
+        #999 5px,
+        #999 10px
+      );
+    }
+    .on {
+      background-color:#cf9600;
+    }
+    .add-rule {
+      width: 25px;
+      height: 25px;
+      font-size: 18px;
+      padding: 5px;
+      font-family: Consolas, Monospace;
+      border: 1px solid #22748f;
+      cursor: pointer;
+    }
+    .gen-select {
+      width: 30px;
+      display: inline-block;
+    }
+  </style>
+</form>
+          </div>
+          <div class="inline-block">
+            <h2>
+              Stay Dead
+            </h2>
+          </div>
+          <hr>
+          <div class="inline-block">
+            <h2>
+              To Alive
+            </h2>
+          </div>
+          <div class="inline-block">
+            <h2>
+              To Dead
+            </h2>
+          </div>
+        </div>
+      </center>
+      <div class="push"></div> <!-- For sticky footer --->
+    </div>
+    <div class="footer">
+    Made by Trent Fridey 2017
+  </div>
+    <footer>
+      <script
+			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+      <script src="client.js"></script>
+    </footer>
+  </body>
+  
+</html>
