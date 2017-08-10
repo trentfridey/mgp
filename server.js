@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 
-// mongoose.connect("mongodb://localhost/mgp") // Currently only runs server locally
+mongoose.connect("mongodb://localhost:27017/mgp",{useMongoClient: true}); // Currently only runs server locally
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'db err'));
 db.once('open',function(){
@@ -33,7 +33,7 @@ app.post("/adduser", function(req, res){
 });
 
 app.get("/login", function(req, res){
-  User.find()
+  User.find({name: req.body.name, pass: req.body.pass}, function(err,db){})
 });
 
 app.use(express.static('public'));
@@ -50,6 +50,6 @@ app.get("/signin", function(req, res){
   res.sendFile(__dirname + '/views/signin.html');
 });
 
-var listener = app.listen(process.env.PORT, function () {
+var listener = app.listen(process.argv[2], function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
