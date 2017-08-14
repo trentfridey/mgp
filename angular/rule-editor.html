@@ -5,7 +5,11 @@
     <h3>
       Box Rules
     </h3>
+    <p>
+    	1.
+    </p>
     <div class="rule-opt">
+    	<div style="display: inline-block">
       <div class="box">
       <div class="cell-rule on">
         <!-- clicking me binds data to some model -->
@@ -35,20 +39,20 @@
         <!-- clicking me binds data to some model -->
       </div>
     </div>
-      <div>
-        <p>
-          1
-        </p>
-        <div class="add-rule">
+    <div>
+        <div class="rule-btn">
           X
         </div>
       </div>
-      <div class="add-rule">
-        +
-      </div>
-      <h4>
-        Add Box Rule
-      </h4>
+    </div>
+    <div class="add-rule">
+	    <div class="rule-btn">
+	      +
+	    </div>
+	    <h4>
+	      Add
+	    </h4>
+	  </div>
     </div>
     </div>
       
@@ -70,13 +74,18 @@
       <option value="8">8</option>
       </select> neighbors
       </p>
-      <div class="add-rule">
+      <div class="rule-btn">
         X
       </div>
     </div>
     <div class="add-rule">
-        +
-      </div>
+	    <div class="rule-btn">
+	      +
+	    </div>
+	    <h4>
+	      Add
+	    </h4>
+	  </div>
   </div>
   <style>
 h3 {
@@ -86,10 +95,12 @@ color: #777;
 }
 h4 {
 font-family: Consolas, Monospace;
-font-size: 20px;
+font-size: 14px;
 color: #000;
-font-weight: bold;
+font-weight: normal;
 display: inline;
+margin-top: 2px;
+margin-bottom: 2px;
 }
 p {
 font-family: Helvetica, sans-serif;
@@ -98,6 +109,7 @@ font-size: 18px;
 .rule-group {
 border: 1px solid #999;
 padding: 25px;
+width: 250px;
 }
 .rule-opt {
 display:inline-block;
@@ -109,13 +121,15 @@ border-left: 1px solid #999;
 }
 .box {
 border: 3px solid #7bafce;
-width: 60px;
-height: 60px;
+width: 90px;
+height: 90px;
 }
-
+.add-rule {
+margin: 10px auto;
+}
 .cell-rule {
-width: 19px;
-height: 19px;
+width: 29px;
+height: 29px;
 border-top: 1px solid #22748f;
 border-left: 1px solid #22748f;
 float:left;
@@ -133,18 +147,20 @@ background: repeating-linear-gradient(
 45deg,
 #22748f,
 #22748f 5px,
-#999 5px,
-#999 10px
+#ddd 5px,
+#ddd 10px
 );
 }
 .on {
 background-color:#cf9600;
 }
-.add-rule {
+.rule-btn {
 width: 25px;
 height: 25px;
 font-size: 18px;
 padding: 5px;
+margin: 10px;
+display: inline-block;
 font-family: Consolas, Monospace;
 border: 1px solid #22748f;
 cursor: pointer;

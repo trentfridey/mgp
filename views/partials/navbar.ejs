@@ -1,0 +1,33 @@
+<div class="navbar">
+  <div class="logo">
+    Modular Growing Pixels
+  </div>
+  <div class="navgroup">
+    <a href="/">
+    <div class="navitem" id="home">
+      Home
+    </div>
+    </a>
+    <a href="about">
+    <div class="navitem" id="about">
+      About
+    </div>
+    </a>
+    <% if(!user) { %>
+    <a href="signin">
+    <div class="navitem" id="signlog">
+      Sign Up / Log In
+    </div>
+    </a>
+    <% } %>
+    <% if(user) { %>
+    <a href="rules">
+    <div class="navitem" id="signlog">
+      My Rules
+    </div>
+    </a>
+    <% } %>
+    <div style="clear: both"> <!-- for floats -->
+    </div>
+  </div>
+</div>
