@@ -8,12 +8,19 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var passportLocalMongoose = require('passport-local-mongoose');
+var cookieParser = require('cookie-parser');
+var expressSession = require('express-session');
 
 var app = express();
+app.use(cookieParser());
+app.use(expressSession({secret: 'arbitrary'}));
+app.set('view engine', 'ejs');
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-
+mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost:27017/mgp",{useMongoClient: true}); // Currently only runs server locally
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'db err'));
@@ -27,9 +34,9 @@ var userSchema = mongoose.Schema({
 userSchema.plugin(passportLocalMongoose);
 var User = mongoose.model('User', userSchema);
 
-passport.use(new LocalStrategy(userSchema.authenticate()));
-passport.serializeUser(userSchema.serializeUser());
-passport.deserializeUser(userSchema.deserializeUser());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.post("/adduser", function(req, res){
   User.register(new User({username: req.body.username}), req.body.password, function(err, user){
@@ -42,26 +49,27 @@ app.post("/adduser", function(req, res){
   }); 
 });
 
-app.get("/login", function(req, res){
-  User.find({name: req.body.name, pass: req.body.pass}, function(err,db){})
+app.post("/login", passport.authenticate('local'), function(req, res){
+	res.redirect('/');
 });
 
 app.use(express.static('public'));
 
-app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
+app.get("/", function (req, res) {
+  res.render('index', {user: req.user});
+  console.log(req);
 });
 
 app.get("/about", function(req, res){
-  res.sendFile(__dirname + '/views/about.html');
+  res.render('about',{user: req.user});
 });
 
 app.get("/signin", function(req, res){
-  res.sendFile(__dirname + '/views/signin.html');
+  res.render('signin',{user: req.user});
 });
 
 app.get("/rules", function(req, res){
-  res.sendFile(__dirname + '/views/rules.html');
+  res.render('rules',{user: req.user});
   });
 
 var listener = app.listen(process.argv[2], function () {
