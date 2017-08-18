@@ -1,58 +1,19 @@
 <html>
   <head>
-    <title>Rules - MGP</title>
+    <title>My Rules - MGP</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="rules.css"/>
   </head>
   <body>
     <div class="container">
-		  <div class="navbar">
-		    <div class="logo">
-		      Modular Growing Pixels
-		    </div>
-		    <div class="navgroup">
-		      <div class="navitem" id="home">
-		        Home
-		      </div>
-		      <a href="about">
-		      <div class="navitem" id="about">
-		        About
-		      </div>
-		      </a>
-		      <a href="signin">
-		      <div class="navitem" id="signlog">
-		        Sign Up / Log In
-		      </div>
-		      </a>
-		      <div style="clear: both"> <!-- for floats -->
-		      </div>
-		    </div>
-		  </div>
+    <%- include('partials/navbar') %>
       <center>
         <div class="content">
           <h1>
-            Rule Editor
+            My Rules
           </h1>
-          <div class="inline-block">
-            <h2>
-              Stay Alive
-            </h2>
-          </div>
-          <div class="inline-block">
-            <h2>
-              Stay Dead
-            </h2>
-          </div>
-          <hr>
-          <div class="inline-block">
-            <h2>
-              To Alive
-            </h2>
-          </div>
-          <div class="inline-block">
-            <h2>
-              To Dead
-            </h2>
-          </div>
+					<hr>
+					<!--- INSERT RULES LIST HERE --->
         </div>
       </center>
       <div class="push"></div> <!-- For sticky footer --->
@@ -65,9 +26,7 @@
 			  src="https://code.jquery.com/jquery-3.2.1.min.js"
 			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 			  crossorigin="anonymous"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
       <script src="client.js"></script>
     </footer>
   </body>
-  
 </html>

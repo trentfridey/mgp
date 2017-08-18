@@ -1,0 +1,81 @@
+h3 {
+	font-family: Consolas, Monospace;
+	font-size: 22px;
+	color: #777;
+}
+h4 {
+	font-family: Consolas, Monospace;
+	font-size: 14px;
+	color: #000;
+	font-weight: normal;
+	display: inline;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+p {
+	font-family: Helvetica, sans-serif;
+	font-size: 18px;
+}
+.rule-group {
+	border: 1px solid #999;
+	padding: 25px;
+	width: 250px;
+}
+.rule-opt {
+	display:inline-block;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.rule-opt.right {
+	border-left: 1px solid #999;
+}
+.box {
+	border: 3px solid #7bafce;
+	width: 90px;
+	height: 90px;
+}
+.add-rule {
+	margin: 10px auto;
+}
+.cell-rule {
+	width: 29px;
+	height: 29px;
+	border-top: 1px solid #22748f;
+	border-left: 1px solid #22748f;
+	float:left;
+	margin:0px;
+	font-size: 7px;
+}
+.cell-rule:nth-child(3n+1){
+	clear: both;
+}
+.cell-rule:hover {
+	background-color:#efb800;
+}
+.const {
+	background: repeating-linear-gradient(
+	45deg,
+	#22748f,
+	#22748f 5px,
+	#ddd 5px,
+	#ddd 10px
+	);
+}
+.on {
+	background-color:#cf9600;
+}
+.rule-btn {
+	width: 25px;
+	height: 25px;
+	font-size: 18px;
+	padding: 5px;
+	margin: 10px;
+	display: inline-block;
+	font-family: Consolas, Monospace;
+	border: 1px solid #22748f;
+	cursor: pointer;
+}
+.gen-select {
+	width: 30px;
+	display: inline-block;
+}

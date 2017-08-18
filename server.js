@@ -57,7 +57,6 @@ app.use(express.static('public'));
 
 app.get("/", function (req, res) {
   res.render('index', {user: req.user});
-  console.log(req);
 });
 
 app.get("/about", function(req, res){
