@@ -15,4 +15,4 @@ TODO:
 
 * Make the back end 
   1. Setup up server [x]
-  2. Manage user accounts and data [o]
+  2. Manage user accounts and data [x]
