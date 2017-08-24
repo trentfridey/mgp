@@ -29,31 +29,48 @@
 		    </div>
 		  </div>
       <center>
-        <div class="content">
+      	
+        <div class="content" ngController="mgpRuleEditCtrl">
           <h1>
             Rule Editor
           </h1>
-          <div class="inline-block">
-            <h2>
-              Stay Alive
-            </h2>
+          <!-- experimental <div class="btn" ng-click="editAlive = !editAlive">Toggle Alive/Dead</div> --->
+          <div ng-if="editAlive">
+		        <div class="inline-block">
+		          <h2>
+		            Stay Alive
+		          </h2>
+		          <mgp-rule-editor name="stayAlive" ng-model="user.rule" type="stayAlive">
+		          </mgp-rule-editor>
+		        </div>
+		        <div class="inline-block">
+		          <h2>
+		            To Alive
+		          </h2>
+		          <mgp-rule-editor name="stayDead" ng-model="user.rule" type="toAlive">
+		          </mgp-rule-editor>
+		        </div>
+		        <div class="btn">Submit</div>
           </div>
-          <div class="inline-block">
-            <h2>
-              Stay Dead
-            </h2>
+          <!--- experimental 
+          <div ng-if="!editAlive">
+		        <div class="inline-block">
+		          <h2>
+		            Stay Dead
+		          </h2>
+		          <mgp-rule-editor name="toAlive" ng-model="user.rule" type="stayDead">
+		          </mgp-rule-editor>
+		        </div>
+		        <div class="inline-block">
+		          <h2>
+		            To Dead
+		          </h2>
+		          <mgp-rule-editor name="toDead" ng-model="user.rule" type="toDead">
+		          </mgp-rule-editor>
+		        </div>
+		        <div class="btn">Submit</div>
           </div>
-          <hr>
-          <div class="inline-block">
-            <h2>
-              To Alive
-            </h2>
-          </div>
-          <div class="inline-block">
-            <h2>
-              To Dead
-            </h2>
-          </div>
+          --->
         </div>
       </center>
       <div class="push"></div> <!-- For sticky footer --->
@@ -62,11 +79,9 @@
     Made by Trent Fridey 2017
   </div>
     <footer>
-      <script
-			  src="https://code.jquery.com/jquery-3.2.1.min.js"
-			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-			  crossorigin="anonymous"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js"></script>
+      <script src="jquery-3.1.1.min.js"></script>
+      <script src="angular.min.js"></script>
+      <script src="angular-resource.min.js"></script>
       <script src="client.js"></script>
     </footer>
   </body>
