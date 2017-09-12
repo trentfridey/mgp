@@ -1,0 +1,70 @@
+<html>
+  <head>
+    <title>Rules - MGP</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link rel="stylesheet" type="text/css" href="rules.css"/>
+  </head>
+  <body>
+    <div class="container">
+    <%- include('partials/navbar') %>
+      <center>
+        <div class="content" ng-controller="mgpRuleEditCtrl">
+          <h1>
+            Rule Editor
+          </h1>
+          <!-- experimental <div class="btn" ng-click="editAlive = !editAlive">Toggle Alive/Dead</div> --->
+          <div ng-if="editAlive">
+		        <div class="inline-block">
+		          <h2>
+		            Stay Alive
+		          </h2>
+		          <mgp-rule-editor name="stayAlive" type="stayAlive">
+		          </mgp-rule-editor>
+		        </div>
+		        <div class="inline-block">
+		          <h2>
+		            To Alive
+		          </h2>
+		          <mgp-rule-editor name="toAlive" type="toAlive">
+		          </mgp-rule-editor>
+		        </div>
+		        <div class="btn">Submit</div>
+          </div>
+          <!--- experimental 
+          <div ng-if="!editAlive">
+		        <div class="inline-block">
+		          <h2>
+		            Stay Dead
+		          </h2>
+		          <mgp-rule-editor name="toAlive" ng-model="user.rule" type="stayDead">
+		          </mgp-rule-editor>
+		        </div>
+		        <div class="inline-block">
+		          <h2>
+		            To Dead
+		          </h2>
+		          <mgp-rule-editor name="toDead" ng-model="user.rule" type="toDead">
+		          </mgp-rule-editor>
+		        </div>
+		        <div class="btn">Submit</div>
+          </div>
+          --->
+        </div>
+      </center>
+      <div class="push"></div> <!-- For sticky footer --->
+    </div>
+    <div class="footer">
+    Made by Trent Fridey 2017
+  </div>
+    <footer>
+      <script
+			  src="https://code.jquery.com/jquery-3.2.1.min.js"
+			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+			  crossorigin="anonymous"></script>
+      <script src="angular-1.6.6.js"></script>
+      <script src="app.js"></script>
+      <script src="client.js"></script>
+    </footer>
+  </body>
+  
+</html>

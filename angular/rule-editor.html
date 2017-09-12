@@ -1,11 +1,25 @@
-<!-- Todo: Needs some better formatting and a submit button. Also, model logic ;) -->
+
+<!--- User Stories:
+	- I can select the rules regarding a pixel's direction to stay alive, go to dead, stay dead, and go to alive
+	- (specific select) I can select the 8 neighboring pixels for a given pixel to influence each direction
+	- (general select) I can select general rules based on number of neighboring pixels to influence each direction
+	- I can add up to two more specific selects to influence each direction
+	- I can add up to two more general selects to influence each direction
+	- The server will save the rules I have created to the database
+	- I can load my saved rules from the database
+
+ --->
 
 <form>
   <div class="rule-group">
     <h3>
       Box Rules
     </h3>
+    <p>
+    	1.
+    </p>
     <div class="rule-opt">
+    	<div style="display: inline-block">
       <div class="box">
       <div class="cell-rule on">
         <!-- clicking me binds data to some model -->
@@ -35,20 +49,20 @@
         <!-- clicking me binds data to some model -->
       </div>
     </div>
-      <div>
-        <p>
-          1
-        </p>
-        <div class="add-rule">
+    <div>
+        <div class="rule-btn">
           X
         </div>
       </div>
-      <div class="add-rule">
-        +
-      </div>
-      <h4>
-        Add Box Rule
-      </h4>
+    </div>
+    <div class="add-rule">
+	    <div class="rule-btn">
+	      +
+	    </div>
+	    <h4>
+	      Add
+	    </h4>
+	  </div>
     </div>
     </div>
       
@@ -70,88 +84,17 @@
       <option value="8">8</option>
       </select> neighbors
       </p>
-      <div class="add-rule">
+      <div class="rule-btn">
         X
       </div>
     </div>
     <div class="add-rule">
-        +
-      </div>
+	    <div class="rule-btn">
+	      +
+	    </div>
+	    <h4>
+	      Add
+	    </h4>
+	  </div>
   </div>
-  <style>
-h3 {
-font-family: Consolas, Monospace;
-font-size: 22px;
-color: #777;
-}
-h4 {
-font-family: Consolas, Monospace;
-font-size: 20px;
-color: #000;
-font-weight: bold;
-display: inline;
-}
-p {
-font-family: Helvetica, sans-serif;
-font-size: 18px;
-}
-.rule-group {
-border: 1px solid #999;
-padding: 25px;
-}
-.rule-opt {
-display:inline-block;
-padding-left: 10px;
-padding-right: 10px;
-}
-.rule-opt.right {
-border-left: 1px solid #999;
-}
-.box {
-border: 3px solid #7bafce;
-width: 60px;
-height: 60px;
-}
-
-.cell-rule {
-width: 19px;
-height: 19px;
-border-top: 1px solid #22748f;
-border-left: 1px solid #22748f;
-float:left;
-margin:0px;
-font-size: 7px;
-}
-.cell-rule:nth-child(3n+1){
-clear: both;
-}
-.cell-rule:hover {
-background-color:#efb800;
-}
-.const {
-background: repeating-linear-gradient(
-45deg,
-#22748f,
-#22748f 5px,
-#999 5px,
-#999 10px
-);
-}
-.on {
-background-color:#cf9600;
-}
-.add-rule {
-width: 25px;
-height: 25px;
-font-size: 18px;
-padding: 5px;
-font-family: Consolas, Monospace;
-border: 1px solid #22748f;
-cursor: pointer;
-}
-.gen-select {
-width: 30px;
-display: inline-block;
-}
-  </style>
 </form>

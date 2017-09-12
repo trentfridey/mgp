@@ -3,16 +3,16 @@ Game of Modular Growing Pixels (MGP)
 
 An app to simulate all of your modular growing dreams! \ ( ゜u゜)ノ
 
-In development **v1.0.1**
+In development **Glitch v1.0.2**
 
 TODO:
 -----
 
 * Make the front end
   1. Implement mgp game board [x]
-  2. Implement user pages [o]
-  3. Implement changing rules [o]
+  2. Implement changing rules [o]
+    - Persist data across pages [o]
 
 * Make the back end 
   1. Setup up server [x]
-  2. Manage user accounts and data [o]
+
