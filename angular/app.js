@@ -1,15 +1,10 @@
-var angular = require('angular');
-
-var app = angular.module("mgpHandler", ['ngResource']);
+var app = angular.module("mgpHandler",[]);
 
 app.controller('mgpRuleEditCtrl', function($scope){
 	$scope.editAlive = true;
 	$scope.user = {};
 	if($scope.editAlive){
-		$scope.user.stayAlive.general = {rules: ['2','3']};
-		$scope.user.stayAlive.box = {rules: {rule: 1, on: []}};
-		$scope.user.toAlive.general = {rules: ['3']};
-		$scope.user.toAlive.box = {rules: {rule: 1, on: []}};
+		$scope.user.stayAlive = {}
 	}
 	// controller for rule editor
 });

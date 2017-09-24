@@ -1,23 +1,15 @@
 {
   "name": "modulargrowingpixels",
-  "version": "0.0.1",
+  "version": "1.0.2",
   "description": "Fulfilling your growing pixel dreams",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "cookie-parser": "^1.4.3",
     "ejs": "^2.5.7",
     "express": "^4.15.3",
-    "express-session": "^1.15.5",
-    "mongodb": "^2.2.30",
-    "mongoose": "^4.11.5",
-    "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^4.0.0",
-    "angular": "^1.6.6"
+    "express-session": "^1.15.5"
   },
   "engines": {
     "node": "8.x"

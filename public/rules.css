@@ -12,9 +12,47 @@ h4 {
 	margin-top: 2px;
 	margin-bottom: 2px;
 }
-p {
+
+.btn-toggle {
+  border: 2px solid #22748f;
+  color: #22748f;
+  margin: 10px;
+  padding: 5px;
+  width: 105px;
+  border-radius: 3px;
+  font-family: Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.btn-toggle:hover {
+  background-color: #eeefee;
+}
+
+.hidden {
+  text-align: justify;
+  width: 60%;
+}
+
+.hidden p {
 	font-family: Helvetica, sans-serif;
-	font-size: 18px;
+	font-size: 14px;
+  margin-bottom: 16px;
+}
+.hidden ul {
+  font-family: Helvetica, sans-serif;
+  font-size: 14px;
+}
+.hidden ul li {
+  list-style: square inside none;
+  color: #22748f;
+}
+.rule-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.rule-box {
+  flex: 1;
 }
 .rule-group {
 	border: 1px solid #999;

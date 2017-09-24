@@ -1,4 +1,4 @@
-<html>
+<html ng-app="mgpHandler">
   <head>
     <title>Rules - MGP</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
@@ -12,24 +12,52 @@
           <h1>
             Rule Editor
           </h1>
+          <div class="btn-toggle" ng-click="bool=!bool">Show Help</div>
+          <div class="hidden" ng-show="bool">
+            <p>
+              <b>Instructions:</b> MGP is based on simple rules. MGP allows you to customize the rules that governs the application,
+              leading to different behavior.
+              There are two ways to specify the rules:
+            </p>
+            <ul>
+              <li><b>Box Rules:</b> Each pixel is influenced by its eight neighbors. You can turn these neighbors on and off. 
+              When you specify a box rule, a pixel in the simulation will follow the directions when its neighbors match the
+              box rule.</li>
+              <li><b>General Rules:</b> This option allows you to specify a rule based on the number of a given pixel's 
+              neighbors that are alive</li>
+            </ul>
+            <p>For example, the default option rules (the ones the website runs the first time you visit it) are two general rules:</p>
+            <ul>
+              <li>A pixel will stay alive if two or three of its neighbors are alive</li>
+              <li>A pixel will come alive if three of its neighbors are alive</li>
+            </ul>
+          </div>
+          <div class="btn">Submit</div>
+          <div class="btn">Default</div>
           <!-- experimental <div class="btn" ng-click="editAlive = !editAlive">Toggle Alive/Dead</div> --->
-          <div ng-if="editAlive">
-		        <div class="inline-block">
+          <div ng-if="editAlive" class="rule-container">
+		        <div class="rule-box">
 		          <h2>
 		            Stay Alive
 		          </h2>
+              <p>
+                These rules will keep alive pixels alive
+              </p>
 		          <mgp-rule-editor name="stayAlive" type="stayAlive">
 		          </mgp-rule-editor>
 		        </div>
-		        <div class="inline-block">
+		        <div class="rule-box">
 		          <h2>
 		            To Alive
 		          </h2>
+              <p>
+                These rules will turn dead pixels to alive
+              </p>
 		          <mgp-rule-editor name="toAlive" type="toAlive">
 		          </mgp-rule-editor>
 		        </div>
-		        <div class="btn">Submit</div>
           </div>
+          
           <!--- experimental 
           <div ng-if="!editAlive">
 		        <div class="inline-block">
@@ -61,7 +89,7 @@
 			  src="https://code.jquery.com/jquery-3.2.1.min.js"
 			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 			  crossorigin="anonymous"></script>
-      <script src="angular-1.6.6.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
       <script src="app.js"></script>
       <script src="client.js"></script>
     </footer>
