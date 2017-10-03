@@ -1,0 +1,28 @@
+<!-- User Stories
+	- (general select) I can select general rules based on number of neighboring pixels to influence each direction
+	- I can add up to two more general selects to influence each direction
+-->
+
+<div class="rule-group">
+  <h3>
+    General Rules
+  </h3>
+  <div class="rule-opt">
+    <p>
+      1. Any <select class="gen-select" ng-model="type.current" ng-options="opt for opt in type.list">
+      <option value=""></option>
+    </select> neighbors
+    </p>
+    <div class="rule-btn">
+      X
+    </div>
+  </div>
+  <div class="add-rule">
+    <div class="rule-btn">
+      +
+    </div>
+    <h4>
+      Add
+    </h4>
+  </div>
+</div>

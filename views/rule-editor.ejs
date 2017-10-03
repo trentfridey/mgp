@@ -43,8 +43,8 @@
               <p>
                 These rules will keep alive pixels alive
               </p>
-		          <mgp-rule-editor type="stayAlive" ng-model="user.genRule.stayAlive" options="user.genRuleOpts.stayAlive.list" selected="user.genRuleOpts.stayAlive.current">
-		          </mgp-rule-editor>
+              <box-rule-editor type="stayAlive"></box-rule-editor>
+              <gen-rule-editor type="user.genRule.stayAlive"></gen-rule-editor>
 		        </div>
 		        <div class="rule-box">
 		          <h2>
@@ -53,8 +53,8 @@
               <p>
                 These rules will turn dead pixels to alive
               </p>
-		          <mgp-rule-editor type="toAlive" ng-model="user.genRule.toAlive" options="user.genRuleOpts.toAlive.list" selected="user.genRuleOpts.toAlive.current">
-		          </mgp-rule-editor>
+              <box-rule-editor type="toAlive"></box-rule-editor>
+              <gen-rule-editor type="user.genRule.toAlive"></gen-rule-editor>
 		        </div>
           </div>
           
