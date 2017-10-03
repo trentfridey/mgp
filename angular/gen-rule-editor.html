@@ -7,10 +7,9 @@
   <h3>
     General Rules
   </h3>
-  <div class="rule-opt">
-    <p>
-      1. Any <select class="gen-select" ng-model="type.current" ng-options="opt for opt in type.list">
-      <option value=""></option>
+  <div class="rule-opt" ng-repeat="i in type track by $index">
+    <p style="display: inline">
+      {{$index+1}}. Any <select class="gen-select" ng-model="type[$index].current" ng-options="opt for opt in type[$index].list">
     </select> neighbors
     </p>
     <div class="rule-btn">

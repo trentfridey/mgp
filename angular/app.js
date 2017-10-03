@@ -7,9 +7,9 @@ app.controller('mgpRuleEditCtrl', function($scope){
   $scope.user.boxRule = {}
   $scope.user.genRule = {}
   $scope.user.boxRule.stayAlive = {}
-  $scope.user.genRule.stayAlive = {list: [1,2,3,4,5,6,7,8], current: 1}
+  $scope.user.genRule.stayAlive = [{list: [1,2,3,4,5,6,7,8], current: 2}, {list: [1,2,3,4,5,6,7,8], current: 3}]
   $scope.user.boxRule.toAlive = {}
-  $scope.user.genRule.toAlive = {list: [1,2,3,4,5,6,7,8], current: 1}
+  $scope.user.genRule.toAlive = [{list: [1,2,3,4,5,6,7,8], current: 3}]
 });
 
 app.directive('boxRuleEditor', function(){
