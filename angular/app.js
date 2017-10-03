@@ -6,10 +6,22 @@ app.controller('mgpRuleEditCtrl', function($scope){
 	// controller for rule editor
   $scope.user.boxRule = {}
   $scope.user.genRule = {}
-  $scope.user.boxRule.stayAlive = {}
+  $scope.user.boxRule.stayAlive = [{ctrl1: false, ctrl2: false, ctrl3: false, ctrl4: false, ctrl5: false, ctrl6: false, ctrl7:false, ctrl8:false}]
   $scope.user.genRule.stayAlive = [{list: [1,2,3,4,5,6,7,8], current: 2}, {list: [1,2,3,4,5,6,7,8], current: 3}]
-  $scope.user.boxRule.toAlive = {}
+  $scope.user.boxRule.toAlive = [{ctrl1: false, ctrl2: false, ctrl3: false, ctrl4: false, ctrl5: false, ctrl6: false, ctrl7:false, ctrl8:false}]
   $scope.user.genRule.toAlive = [{list: [1,2,3,4,5,6,7,8], current: 3}]
+  $scope.submit = function() {
+    // Submit the form for processing
+    return true;
+  }
+  $scope.reset = function() {
+    // Reset the form to default
+    $scope.user.boxRule.stayAlive = [{ctrl1: false, ctrl2: false, ctrl3: false, ctrl4: false, ctrl5: false, ctrl6: false, ctrl7:false, ctrl8:false}]
+    $scope.user.boxRule.toAlive = [{ctrl1: false, ctrl2: false, ctrl3: false, ctrl4: false, ctrl5: false, ctrl6: false, ctrl7:false, ctrl8:false}]
+    $scope.user.genRule.stayAlive = [{list: [1,2,3,4,5,6,7,8], current: 2}, {list: [1,2,3,4,5,6,7,8], current: 3}]
+    $scope.user.genRule.toAlive = [{list: [1,2,3,4,5,6,7,8], current: 3}]
+    // Needs to update the $viewValue
+  }
 });
 
 app.directive('boxRuleEditor', function(){
@@ -18,10 +30,11 @@ app.directive('boxRuleEditor', function(){
       type: '='
 		},
 		restrict: 'E',
-		//require: '^ngModel',
+		require: '^ngModel',
 		replace: true,
 		templateUrl: 'box-rule-editor.html',
-		link: function(scope, element, attrs){
+		link: function(scope, element, attrs, ngModel){
+      if(!ngModel) return;
       
 		}
   }

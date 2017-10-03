@@ -10,14 +10,15 @@
   <div class="rule-opt" ng-repeat="i in type track by $index">
     <p style="display: inline">
       {{$index+1}}. Any <select class="gen-select" ng-model="type[$index].current" ng-options="opt for opt in type[$index].list">
+      <option value="null"></option>
     </select> neighbors
     </p>
-    <div class="rule-btn">
+    <div class="rule-btn" ng-click="type.splice($index, 1)">
       X
     </div>
   </div>
   <div class="add-rule">
-    <div class="rule-btn">
+    <div class="rule-btn" ng-click="type.length < 4 ? type.push({list: [1,2,3,4,5,6,7,8], current: null}) : 1">
       +
     </div>
     <h4>

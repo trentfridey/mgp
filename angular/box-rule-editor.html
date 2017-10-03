@@ -1,58 +1,51 @@
 <!-- User Stories
 	- (specific select) I can select the 8 neighboring pixels for a given pixel to influence each direction
 	- I can add up to two more specific selects to influence each direction
+
+  -Note: togglePixel needs work passing data from view to model and model to view
 -->
 <div class="rule-group">
    <h3>
      Box Rules
    </h3>
+   <div class="rule-opt" ng-repeat="i in type track by $index">
    <p>
-    1.
+    {{$index+1}}.
    </p>
-   <div class="rule-opt">
     <div style="display: inline-block">
        <div class="box">
-         <div class="cell-rule on">
-           <!-- clicking me binds data to some model -->
+         <div class="cell-rule" ng-click="togglePixel()" ng-class="{'on': type[$index].ctrl1 == 'on'}">
          </div>
-         <div class="cell-rule on">
-           <!-- clicking me binds data to some model -->
+         <div class="cell-rule" ng-click="togglePixel()" ng-class="{'on': type[$index].ctrl2 == 'on'}">
          </div>
-         <div class="cell-rule">
-           <!-- clicking me binds data to some model -->
+         <div class="cell-rule" ng-click="togglePixel()" ng-class="{'on': type[$index].ctrl3 == 'on'}">
          </div>
-         <div class="cell-rule">
-           <!-- clicking me binds data to some model -->
+         <div class="cell-rule" ng-click="togglePixel()" ng-class="{'on': type[$index].ctrl4 == 'on'}">
          </div>
          <div class="cell-rule const">
-           <!-- clicking me binds data to some model -->
          </div>
-         <div class="cell-rule">
-           <!-- clicking me binds data to some model -->
+         <div class="cell-rule" ng-click="togglePixel()" ng-class="{'on': type[$index].ctrl5 == 'on'}">
          </div>
-         <div class="cell-rule">
-           <!-- clicking me binds data to some model -->
+         <div class="cell-rule" ng-click="togglePixel()" ng-class="{'on': type[$index].ctrl6 == 'on'}">
          </div>
-         <div class="cell-rule on">
-           <!-- clicking me binds data to some model -->
+         <div class="cell-rule" ng-click="togglePixel()" ng-class="{'on': type[$index].ctrl7 == 'on'}">
          </div>
-         <div class="cell-rule">
-           <!-- clicking me binds data to some model -->
+         <div class="cell-rule" ng-click="togglePixel()" ng-class="{'on': type[$index].ctrl8 == 'on'}">
          </div>
        </div>
        <div>
-         <div class="rule-btn">
+         <div class="rule-btn" ng-click="type.splice($index, 1)">
            X
          </div>
        </div>
      </div>
-     <div class="add-rule">
-       <div class="rule-btn">
-          +
-       </div>
-       <h4>
-         Add
-       </h4>
-     </div>
+  </div>
+  <div class="add-rule">
+    <div class="rule-btn" ng-click="type.length < 4? type.push({ctrl1: false, ctrl2: false, ctrl3: false, ctrl4: false, ctrl5: false, ctrl6: false, ctrl7:false, ctrl8:false}) : 1">
+      +
+    </div>
+    <h4>
+      Add
+    </h4>
   </div>
 </div>

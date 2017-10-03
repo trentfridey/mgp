@@ -32,8 +32,8 @@
               <li>A pixel will come alive if three of its neighbors are alive</li>
             </ul>
           </div>
-          <div class="btn">Submit</div>
-          <div class="btn">Default</div>
+          <div class="btn" ng-click="submit">Submit</div>
+          <div class="btn" ng-click="reset">Default</div>
           <!-- experimental <div class="btn" ng-click="editAlive = !editAlive">Toggle Alive/Dead</div> --->
           <div ng-if="editAlive" class="rule-container">
 		        <div class="rule-box">
@@ -43,7 +43,7 @@
               <p>
                 These rules will keep alive pixels alive
               </p>
-              <box-rule-editor type="stayAlive"></box-rule-editor>
+              <box-rule-editor type="user.boxRule.stayAlive" ng-model="user.boxRule.stayAlive"></box-rule-editor>
               <gen-rule-editor type="user.genRule.stayAlive"></gen-rule-editor>
 		        </div>
 		        <div class="rule-box">
@@ -53,7 +53,7 @@
               <p>
                 These rules will turn dead pixels to alive
               </p>
-              <box-rule-editor type="toAlive"></box-rule-editor>
+              <box-rule-editor type="user.boxRule.toAlive" ng-model="user.boxRule.toAlive"></box-rule-editor>
               <gen-rule-editor type="user.genRule.toAlive"></gen-rule-editor>
 		        </div>
           </div>
