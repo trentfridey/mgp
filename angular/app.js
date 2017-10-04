@@ -35,7 +35,13 @@ app.directive('boxRuleEditor', function(){
 		templateUrl: 'box-rule-editor.html',
 		link: function(scope, element, attrs, ngModel){
       if(!ngModel) return;
-      
+      scope.togglePixel = function(id,pixel) {
+        scope.type[id][pixel] = !ngModel.$viewValue[id][pixel]
+        console.log(scope.type[id])
+      }
+      scope.$render = function(){
+        scope.type = ngModel.$viewValue
+      }
 		}
   }
 });
