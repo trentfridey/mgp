@@ -1,5 +1,6 @@
 // client-side js
 
+
 $('document').ready(function(){
   var matrix = [];
   var boardHtml = "";
@@ -10,12 +11,11 @@ $('document').ready(function(){
   $(".board").html(boardHtml);
   
   //  Game logic
-  //  Rules:
-      // - if a cell has 2 or 3 live neighbors and it is alive, it stays alive
-      // - if a cell has 3 live neighbors and it is dead, it becomes alive
   var timeout;
-  
-  function game(){
+  var data;
+  var jqxhr = $.get('/data','',function(res){ data = res.d}, 'json')
+  console.log(data)
+  function game(genRules){
     var toAlive = [];
     var toDead = [];
     for(var l = 0; l < pixels; l++){
@@ -31,11 +31,24 @@ $('document').ready(function(){
             }
           }
         }
-      if($("#pixel"+l).attr("class") == "cell alive" && !(aliveNeighbors == 2 || aliveNeighbors == 3)){
+      if($("#pixel"+l).attr("class") == "cell alive"){
+        var toDeadRule = false;
+        for(var a in genRules.stayAlive){
+          console.log(genRules.stayAlive[a].current)
+          toDeadRule |= !(aliveNeighbors === genRules.stayAlive[a].current) 
+          // could be modified to only check for numbers not in set stayAlive
+        }
+        if(toDeadRule){
           toDead.push(l);
         }
-      else if($("#pixel"+l).attr("class") == "cell dead" && aliveNeighbors === 3){
-          toAlive.push(l);
+      }
+      else if($("#pixel"+l).attr("class") == "cell dead"){
+        for(var s in genRules.toAlive){
+          if((aliveNeighbors === genRules.toAlive[s].current)){
+            toAlive.push(l);
+            break;
+          }
+        } 
       }
     }
     for(var q in toAlive){
@@ -46,7 +59,7 @@ $('document').ready(function(){
       $("#pixel"+toDead[r]).removeClass("alive");
       $("#pixel"+toDead[r]).addClass("dead");
     }
-    timeout = setTimeout(game,250);
+    timeout = setTimeout(function(){game(data.genRule)},250);
   }
   
   $("#start").click(function(){
@@ -56,7 +69,7 @@ $('document').ready(function(){
           $("#pixel"+j).addClass("alive");
         }
       }
-      game();
+      game(data.genRule);
   });
   
   $("#stop").click(function(){
