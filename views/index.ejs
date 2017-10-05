@@ -1,4 +1,4 @@
-<html>
+<html ng-app="mgpHandler">
   <head>
     <title>Welcome - MGP</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
@@ -7,7 +7,7 @@
     <div class="container">
     <%- include('partials/navbar') %>
       <center>
-        <div class="content">
+        <div class="content" ng-controller="mgpGameCtrl">
           <h1>
             Modular Growing Pixels
           </h1>
@@ -37,6 +37,8 @@
 			  src="https://code.jquery.com/jquery-3.2.1.min.js"
 			  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
 			  crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+      <script src="app.js"></script>
       <script src="client.js"></script>
     </footer>
   </body>
