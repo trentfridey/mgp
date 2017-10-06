@@ -16,6 +16,7 @@ $('document').ready(function(){
   var jqxhr = $.get('/data','',function(res){ console.log('loaded')}, 'json').done(function(d){data = d; console.log(data)})
   function game(){
     var genRules = data.genRule;
+    var boxRules = data.boxRule;
     var toAlive = [];
     var toDead = [];
     for(var l = 0; l < pixels; l++){

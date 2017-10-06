@@ -25,11 +25,10 @@ hr {
   background: #fff;
 }
 .navbar {
-  width:100vw;
+  width:100%;
   position:fixed;
   padding:20px;
-  margin: 0px;
-  border-bottom: 2px solid white;
+  margin: 0;
   background-color:#3e86ae;
   border-bottom: 3px solid #22748f;
 }
@@ -56,7 +55,7 @@ hr {
   color:white;
   font-family:sans-serif;
   width:80px;
-  margin-right: 0px;
+  margin-right: 20px;
   text-align:center;
   cursor:pointer;
 }
@@ -79,6 +78,7 @@ hr {
   margin:0 auto;
   text-align:justify;
 }
+/* for database version
 .sign-in{
   display:inline-block;
   width: 250px;
@@ -99,7 +99,7 @@ hr {
 .input:focus{
   border: 3px solid #22748f;
 }
-
+*/
 .inline-block {
   display:inline-block;
   margin-left: 150px;
