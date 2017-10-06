@@ -6,16 +6,16 @@ $('document').ready(function(){
   var boardHtml = "";
   var pixels = 840*600/144;
   for(var i=0; i < pixels; i++){
-    boardHtml = boardHtml.concat("<div class='cell dead' id='pixel" + i +"'></div>")
+    boardHtml = boardHtml.concat("<div class='cell' id='pixel" + i +"'></div>")
   } // id runs 0 through 3499
   $(".board").html(boardHtml);
   
   //  Game logic
   var timeout;
   var data;
-  var jqxhr = $.get('/data','',function(res){ data = res.d}, 'json')
-  console.log(data)
-  function game(genRules){
+  var jqxhr = $.get('/data','',function(res){ console.log('loaded')}, 'json').done(function(d){data = d; console.log(data)})
+  function game(){
+    var genRules = data.genRule;
     var toAlive = [];
     var toDead = [];
     for(var l = 0; l < pixels; l++){
@@ -32,54 +32,57 @@ $('document').ready(function(){
           }
         }
       if($("#pixel"+l).attr("class") == "cell alive"){
-        var toDeadRule = false;
+        var stayAliveRule = false;
+        var toDeadRule;
         for(var a in genRules.stayAlive){
-          console.log(genRules.stayAlive[a].current)
-          toDeadRule |= !(aliveNeighbors === genRules.stayAlive[a].current) 
-          // could be modified to only check for numbers not in set stayAlive
+          stayAliveRule =  stayAliveRule || (aliveNeighbors == genRules.stayAlive[a].current)
+          toDeadRule = !stayAliveRule // Logical OR all conditions to alive, to dead rule is just the opposite
         }
         if(toDeadRule){
           toDead.push(l);
         }
       }
-      else if($("#pixel"+l).attr("class") == "cell dead"){
+      else if($("#pixel"+l).attr("class") !== "cell alive"){
+        var toAliveRule = false;
         for(var s in genRules.toAlive){
-          if((aliveNeighbors === genRules.toAlive[s].current)){
-            toAlive.push(l);
-            break;
-          }
-        } 
+          toAliveRule = toAliveRule || (aliveNeighbors == genRules.toAlive[s].current)
+        }
+        if(toAliveRule){
+          toAlive.push(l);
+        }
       }
     }
     for(var q in toAlive){
-      $("#pixel"+toAlive[q]).removeClass("dead");
       $("#pixel"+toAlive[q]).addClass("alive");      
     }
     for(var r in toDead){
       $("#pixel"+toDead[r]).removeClass("alive");
-      $("#pixel"+toDead[r]).addClass("dead");
     }
-    timeout = setTimeout(function(){game(data.genRule)},250);
+    timeout = setTimeout(game,500);
   }
   
+  var init = false;
   $("#start").click(function(){
+    if(!init){
       for(var j = 0; j < pixels; j++){
         if(Math.floor(Math.random()*2)){
-          $("#pixel"+j).removeClass("dead");
           $("#pixel"+j).addClass("alive");
         }
       }
-      game(data.genRule);
+      init = true;
+    }
+      game();
   });
   
   $("#stop").click(function(){
     clearInterval(timeout);
   });
   
-  $("#clear").click(function(){
+  $("#reset").click(function(){
     for(var k = 0; k < pixels; k++){
       $("#pixel"+k).removeClass("alive");
     }
     clearInterval(timeout);
+    init = false;
   });
 });

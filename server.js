@@ -2,13 +2,17 @@
 // where your node app starts
 
 // init project
+var session = require('cookie-session');
 var express = require('express');
 var bodyParser = require('body-parser');
-var gameData = {}; // used for passing data between rules and game
 
 var app = express();
 app.set('view engine', 'ejs');
 
+app.use(session({
+  name:'session',
+  keys:['key1','key2']
+}));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.use(express.static('angular'));
@@ -22,13 +26,14 @@ app.get("/about", function(req, res){
 });
 
 app.post("/data", function(req, res){
-  gameData.boxRule = req.body.boxRule;
-  gameData.genRule = req.body.genRule;
+  req.session.data = {};
+  req.session.data.boxRule = req.body.boxRule;
+  req.session.data.genRule = req.body.genRule;
   res.end();
 });
 
 app.get('/data', function(req, res){
-  res.json(gameData);
+  res.json(req.session.data);
   res.end();
 })
 

@@ -3,7 +3,7 @@ Game of Modular Growing Pixels (MGP)
 
 An app to simulate all of your modular growing dreams! \ ( ゜u゜)ノ
 
-In development **Glitch v1.0.2**
+In development **Glitch v1.0.2.5**
 
 TODO:
 -----
