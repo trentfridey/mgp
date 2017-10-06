@@ -58,5 +58,5 @@ app.directive('genRuleEditor', function(){
 
 
 app.controller('mgpGameCtrl', function($scope, $http){
-
+  // for debugging, future features
 });

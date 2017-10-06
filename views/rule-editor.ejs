@@ -15,6 +15,9 @@
           <div class="btn-toggle" ng-click="bool=!bool">{{bool? "Hide" : "Show"}} Help</div>
           <div class="hidden" ng-show="bool">
             <p>
+              When you have specified the rules you want to use, click <b>'Save'</b>. To return to the board, click <b>'To Board'</b>
+            </p>
+            <p>
               <b>Instructions:</b> MGP is based on simple rules. MGP allows you to customize the rules that governs the application,
               leading to different behavior.
               There are two ways to specify the rules:
@@ -32,7 +35,8 @@
               <li>A pixel will come alive if three of its neighbors are alive</li>
             </ul>
           </div>
-         <div class="btn" ng-click="submit()">Submit</div>
+         <div class="btn" ng-click="submit()">Save</div>
+          <a href="/"><div class="btn">To Board</div></a>
           <!-- experimental <div class="btn" ng-click="editAlive = !editAlive">Toggle Alive/Dead</div> --->
           <div ng-if="editAlive" class="rule-container">
 		        <div class="rule-box">
