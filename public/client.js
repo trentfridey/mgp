@@ -1,37 +1,94 @@
 // client-side js
-
-
-$('document').ready(function(){
-  // Load the board
-  var matrix = [];
-  var boardHtml = "";
-  var pixels = 840*600/144;
-  for(var i=0; i < pixels; i++){
-    boardHtml = boardHtml.concat("<div class='cell' id='pixel" + i +"'></div>")
-  } // id runs 0 through 3499
-  $(".board").html(boardHtml);
+document.addEventListener('DOMContentLoaded', function(){
+  var canvas = document.getElementById('canvas');
+  var gridCanvas = document.getElementById('grid');
+  var ctx = canvas.getContext('2d');
+  var gctx = gridCanvas.getContext('2d');
   
-  //  Game logic
+  var sqdim = 10;
+  var cols = 84;
+  var rows = 60;
+  var xCoord = (function(){var arrX = []; for(var i=0; i<840; i+=10){arrX.push(i-0.5)} return arrX})();
+  var yCoord = (function(){var arrY = []; for(var j=0; j<600; j+=10){arrY.push(j-0.5)} return arrY})();
+  
+  // Init grid
+  var grid = new Path2D();
+  function strokeGrid(){
+    for(var k in xCoord){
+      for(var l in yCoord){
+        grid.rect(xCoord[k], yCoord[l], sqdim, sqdim)
+      }
+    }
+    gctx.strokeStyle = 'gray';
+    gctx.stroke(grid);
+  }
+  strokeGrid();
+  
+  // Pixel config
+  function fillSq(x, y){
+    ctx.fillRect(x+0.5,y+0.5, sqdim-1, sqdim-1)
+  }
+  
+  var pixelsIndex = (function(){var p = []; for(var n=1; n<=84*60; n++){p.push(n)} return p})();
+  var pixelNum = pixelsIndex.length;
+  var pixels = (function(){var pi = {}; for(var o in pixelsIndex){pi["pixel"+o] = {alive: false}} return pi})();
+  
+  // Game Controls
+  var init = false;
+  $("#start").click(function(){
+    if(!init){
+      ctx.fillStyle = 'orange';
+      for(var q in pixelsIndex){
+        var row = Math.floor(q/84);
+        var col = q-row*84;
+        if(Math.floor(Math.random()*2)){ // init in random state
+          fillSq(xCoord[col], yCoord[row]);
+          pixels["pixel" + q].alive = true;
+        }
+      }
+      init = true;
+    }
+    game(); // start game
+  });
+  
+  $("#stop").click(function(){
+    clearInterval(timeout);
+  });
+  
+  $("#reset").click(function(){
+    ctx.fillStyle = 'white';
+    for(var t in pixelsIndex){
+      console.log(t);
+      var row = Math.floor(t/84);
+      var col = t-row*84;
+      fillSq(xCoord[col], yCoord[row])
+      pixels["pixel" + t].alive = false;
+    }
+    clearInterval(timeout);
+    init = false;
+  });
+  
+  //Game Logic
   var timeout;
   var data;
   // Get the rule data
-  var jqxhr = $.get('/data','',function(res){ console.log('loaded')}, 'json').done(function(d){data = d; console.log(data)})
+  var jqxhr = $.get('/data','',function(res){ console.log('loaded')}, 'json').done(function(d){data = d;})
+ // var fsArr = ["rgba(255,0,0,0.7)","rgba(255,171,0,0.7)","rgba(255,255,0,0.7)","rgba(0,255,0,0.7)","rgba(0,0,255,0.7)","rgba(0,171,255,0.7)","rgba(0,255,255,0.7)","rgba(255,255,255,0.7)"]
+ // var fsPixArr = [];
   function game(){
     var genRules = data.genRule;
     var boxRules = data.boxRule;
     var toAlive = [];
     var toDead = [];
-    for(var l = 0; l < pixels; l++){ // loop through all pixels on board
-      var row = Math.floor(l/70);
-      var col = l-(Math.floor(l/70)*70);
-      var neighbors = [];
+    for(var l = 0; l < pixelNum; l++){
+      var row = Math.floor(l/84);
+      var col = l-(Math.floor(l/84)*84);
       var aliveNeighbors = 0;
-        for(var m = Math.max(row-1,0); m < Math.min(row+2,50); m++){
-          var neighborRow = m-Math.max(row-1,0);
-          for(var n = Math.max(col-1,0); n < Math.min(col+2,70); n++){
-            var neighborCol = n-Math.max(col-1, 0);
-            if(m*70+n !== l){
-              if($("#pixel"+(m*70+n)).attr("class") == "cell alive"){
+      var neighbors = [];
+        for(var m = Math.max(row-1,0); m < Math.min(row+2, 36); m++){
+          for(var n = Math.max(col-1,0); n < Math.min(col+2, 84); n++){
+            if(m*84+n !== l){
+              if(pixels["pixel"+(m*84+n)].alive === true){
                 aliveNeighbors++; // accumulate alive neighbor count for general rule check
                 neighbors.push(true); // build array of alive neighbors for box rule check
               }
@@ -41,7 +98,8 @@ $('document').ready(function(){
             }
           }
         }
-      if($("#pixel"+l).attr("class") == "cell alive"){
+     // fsPixArr.push(fsArr[aliveNeighbors]);
+    if(pixels["pixel"+l].alive){
         var stayAliveRule = false;
         var toDeadRule;
         for(var a in genRules.stayAlive){
@@ -50,12 +108,15 @@ $('document').ready(function(){
         }
         var boxAliveRule = true;
         var boxAliveRuleNotEmpty = false;
+        loopStayAlive:
         for(var b in boxRules.stayAlive){
           var keys = Object.keys(boxRules.stayAlive[b])
+          loopStayAlivePixels:
           for(var c in keys){
             // compare neighbors' states to box rule states
             if(boxRules.stayAlive[b][keys[c]] !== neighbors[c]){
               boxAliveRule = false;
+              break loopStayAlivePixels;
               // if they don't match, then the rule isn't satisfied
             }
             boxAliveRuleNotEmpty = boxAliveRuleNotEmpty || boxRules.stayAlive[b][keys[c]]
@@ -72,7 +133,7 @@ $('document').ready(function(){
           toDead.push(l);
         }
       }
-      else if($("#pixel"+l).attr("class") !== "cell alive"){
+      else if(!pixels["pixel"+l].alive){
         var toAliveRule = false;
         for(var s in genRules.toAlive){
           toAliveRule = toAliveRule || (aliveNeighbors == genRules.toAlive[s].current)
@@ -80,56 +141,55 @@ $('document').ready(function(){
         }
         var boxAliveRule = true;
         var boxAliveRuleNotEmpty = false;
-        for(var b in boxRules.toAlive){
+        loopToAlive:
+        for(var b in boxRules.toAlive){ 
           var keys = Object.keys(boxRules.toAlive[b])
+          loopToAlivePixels:
           for(var c in keys){
             // compare neighbors' states to box rule states
             if(boxRules.toAlive[b][keys[c]] !== neighbors[c]){
-              boxAliveRule = false;
+              boxAliveRule = false; // pixel's neighbors do not match particular box rule
+              break loopToAlivePixels;
             }
             boxAliveRuleNotEmpty = boxAliveRuleNotEmpty || boxRules.toAlive[b][keys[c]]
-            // check for empty box rule
+            // checks for empty box rule, like the previous case
+            // operands will be false unless a box rule is present
           }
         }
         if(boxAliveRuleNotEmpty){
           toAliveRule = toAliveRule || boxAliveRule
+          // will be true if pixel's neighbors match any box rules
         }
         if(toAliveRule){
           toAlive.push(l);
         }
       }
     }
-    for(var q in toAlive){
-      $("#pixel"+toAlive[q]).addClass("alive");      
+    for(var v in toDead){
+      pixels["pixel"+toDead[v]].alive = false;
     }
-    for(var r in toDead){
-      $("#pixel"+toDead[r]).removeClass("alive");
+    for(var w in toAlive){
+      pixels["pixel"+toAlive[w]].alive = true;
     }
-    timeout = setTimeout(game,500);
+    
+    ctx.fillStyle = 'orange';
+    for(var u in pixelsIndex){
+      var row = Math.floor(u/84);
+      var col = u-row*84;
+      if(pixels["pixel"+u].alive){
+        fillSq(xCoord[col], yCoord[row])
+      }
+    }
+    ctx.fillStyle = 'white';
+    for(var x in pixelsIndex){
+      var row = Math.floor(x/84);
+      var col = x-row*84;
+      if(!pixels["pixel"+x].alive){
+        fillSq(xCoord[col], yCoord[row])
+      }
+    }
+    
+    timeout = setTimeout(game, 25);
   }
   
-  var init = false;
-  $("#start").click(function(){
-    if(!init){
-      for(var j = 0; j < pixels; j++){
-        if(Math.floor(Math.random()*2)){
-          $("#pixel"+j).addClass("alive");
-        }
-      }
-      init = true;
-    }
-      game();
-  });
-  
-  $("#stop").click(function(){
-    clearInterval(timeout);
-  });
-  
-  $("#reset").click(function(){
-    for(var k = 0; k < pixels; k++){
-      $("#pixel"+k).removeClass("alive");
-    }
-    clearInterval(timeout);
-    init = false;
-  });
-});
+})

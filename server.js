@@ -33,8 +33,21 @@ app.post("/data", function(req, res){
 });
 
 app.get('/data', function(req, res){
-  res.json(req.session.data);
-  res.end();
+  if(req.session.data){
+    res.json(req.session.data);
+  } else {
+    res.json({boxRule:
+               {stayAlive:
+                [{ctrl1: false, ctrl2: false, ctrl3: false, ctrl4: false, ctrl5: false, ctrl6: false, ctrl7:false, ctrl8:false}],
+                toAlive:
+                [{ctrl1: false, ctrl2: false, ctrl3: false, ctrl4: false, ctrl5: false, ctrl6: false, ctrl7:false, ctrl8:false}]},
+               genRule:
+               {stayAlive:
+                [{list: [1,2,3,4,5,6,7,8], current: 2}, {list: [1,2,3,4,5,6,7,8], current: 3}],
+                toAlive:
+                [{list: [1,2,3,4,5,6,7,8], current: 3}]}});
+  }
+    res.end();
 })
 
 app.get("/rule-editor", function(req, res){

@@ -9,10 +9,11 @@
       <center>
         <div class="content" ng-controller="mgpGameCtrl">
           <h1>
-            Modular Growing Pixels
+            Game Board
           </h1>
           <div class="board">
-            <!--- INSERT BOARD HERE --->
+            <canvas id="grid" height="360px" width="840px"></canvas>
+            <canvas id="canvas" height="360px" width="840px"></canvas>
           </div>
           <div class="dashboard">
             <div class="btn" id="start">

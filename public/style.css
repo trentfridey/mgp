@@ -36,8 +36,6 @@ hr {
   text-decoration:none;
 }
 .logo {
-  margin:0px;
-  display:inline;
   float: left;
   color:white;
   font-family:Consolas, Monospace;
@@ -45,7 +43,6 @@ hr {
   text-align:center;
 }
 .navgroup {
-  display:inline;
   float:right;
   padding:10px;
 }
@@ -54,7 +51,6 @@ hr {
   padding:25px;
   color:white;
   font-family:sans-serif;
-  width:80px;
   margin-right: 20px;
   text-align:center;
   cursor:pointer;
@@ -106,30 +102,25 @@ hr {
   margin-right: 150px;
   padding: 25px;
 }
-
 .board {
-  width:840px;
-  height:600px;
+  box-sizing: border-box;
+  position: relative;
   margin: 0 auto;
-  border: 3px solid #7bafce;
+  padding: 0;
+  width: 840px;
+  height: 360px;
 }
-.cell {
-  width: 11px;
-  height: 11px;
-  border-top: 1px solid #22748f;
-  border-left: 1px solid #22748f;
-  float:left;
-  margin:0px;
-  font-size: 7px;
+canvas {
+  border: 2px solid black;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
-.cell:nth-child(70n+1){
-  clear: both;
+#canvas {
+  z-index: 0;
 }
-.alive {
-  background-color: #cf9600;
-}
-.dead {
-  background-color: white;
+#grid {
+  z-index: 1;
 }
 .btn {
   background-color: #3e86ae;
@@ -148,6 +139,10 @@ hr {
 .btn:hover{
   background-color:#5aa2bf;
   box-shadow: inset 0px 0px 4px #7bafce;
+}
+
+.dashboard {
+  margin: 20px;
 }
 
 .push, .footer {
